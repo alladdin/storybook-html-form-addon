@@ -1,17 +1,17 @@
 {
-  "name": "storybook-addon-kit",
-  "version": "0.0.0",
-  "description": "everything you need to build a Storybook addon",
+  "name": "storybook-html-form-addon",
+  "version": "0.1.0",
+  "description": "Addon for work with HTML form elements in Storybook. Wrap it in form and show submitted values.",
   "keywords": [
-    "storybook-addons"
+    "storybook-addons", "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/alladdin/storybook-html-form-addon"
   },
   "type": "module",
   "license": "MIT",
-  "author": "package-author",
+  "author": "Ladislav Dokulil <l.dokulil@gmail.com>",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -34,7 +34,6 @@
     "*.d.ts"
   ],
   "scripts": {
-    "postinstall": "node scripts/welcome.js",
     "build": "tsup",
     "build:watch": "npm run build -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -98,9 +97,9 @@
     ]
   },
   "storybook": {
-    "displayName": "Addon Kit",
+    "displayName": "HTML form addon",
     "supportedFrameworks": [
-      "supported-frameworks"
+      "web-components", "html"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
