@@ -92,9 +92,7 @@
     "previewEntries": [
       "src/preview.ts"
     ],
-    "nodeEntries": [
-      "src/preset.ts"
-    ]
+    "nodeEntries": []
   },
   "storybook": {
     "displayName": "HTML form addon",

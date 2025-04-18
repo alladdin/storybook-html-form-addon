@@ -2,6 +2,7 @@ import React from 'react';
 import './button.css';
 
 interface ButtonProps {
+  type?: 'button' | 'submit' | 'reset';
   /**
    * Is this the principal call to action on the page?
    */
@@ -30,19 +31,25 @@ interface ButtonProps {
 export const Button = ({
   primary = false,
   size = 'medium',
+  type = 'button',
   backgroundColor,
   label,
   ...props
 }: ButtonProps) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
+    <div>
+      <input name="input1" type="text" defaultValue="bla" />
+      <input name="input1" type="text" defaultValue="bla2" />
+      <button
+        name="button1"
+        type={type}
+        className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+        style={{ backgroundColor }}
+        {...props}
+      >
+        {label}
+      </button>
+    </div>
   );
 };
