@@ -1,6 +1,6 @@
 {
   "name": "storybook-html-form-addon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Addon for work with HTML form elements in Storybook. Wrap it in form and show submitted values.",
   "keywords": [
     "storybook-addons",
