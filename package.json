@@ -85,7 +85,8 @@
   },
   "bundler": {
     "exportEntries": [
-      "src/index.ts"
+      "src/index.ts",
+      "src/withHtmlForm.tsx"
     ],
     "managerEntries": [
       "src/manager.tsx"
