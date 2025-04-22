@@ -13,8 +13,8 @@ export const FormSubmitToolButton = memo(function MyAddonSelector({}: { api: API
     channel.emit(EVENTS.SUBMIT);
   }, []);
 
-  channel.on(EVENTS.FORM_INJECTED, (formId: string) => {
-    setEnabled(formId !== null);
+  channel.on(EVENTS.FORM_FOUND, (found: boolean) => {
+    setEnabled(found);
   });
   channel.on(STORY_PREPARED, () => {
     setEnabled(false);

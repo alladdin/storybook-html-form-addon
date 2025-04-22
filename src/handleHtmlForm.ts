@@ -1,17 +1,14 @@
-import React, {ReactNode} from "react";
-import {makeDecorator, addons} from 'storybook/internal/preview-api';
+import {makeDecorator, addons, useEffect} from 'storybook/internal/preview-api';
 import {EVENTS, PARAM_KEY} from "./constants";
 
-export const withHtmlForm = makeDecorator({
+export const handleHtmlForm = makeDecorator({
   name: 'withHtmlForm',
   parameterName: PARAM_KEY,
   skipIfNoParametersOrOptions: false,
   wrapper: (getStory, context) => {
-    const randomId = Math.random().toString(36).replace('0.', '');
-    const formId = `form-${randomId}`;
     const channel = addons.getChannel();
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (event: any) => {
       event.preventDefault();
       const formData = new FormData(event.target as HTMLFormElement);
       const result: {name: string, value: string}[] = [];
@@ -23,15 +20,18 @@ export const withHtmlForm = makeDecorator({
 
     channel.removeAllListeners(EVENTS.SUBMIT);
     channel.on(EVENTS.SUBMIT, () => {
-      const form = (context.canvasElement as ParentNode).querySelector(`#${formId}`) as HTMLFormElement;
+      const form = (context.canvasElement as ParentNode).querySelector('form') as HTMLFormElement;
       form.requestSubmit(null);
     });
 
-    channel.emit(EVENTS.FORM_INJECTED, formId);
+    useEffect(() => {
+      const form = (context.canvasElement as ParentNode).querySelector('form') as HTMLFormElement;
+      if (form) {
+        form.addEventListener('submit', onSubmit);
+        channel.emit(EVENTS.FORM_FOUND, true);
+      }
+    }, []);
 
-    const story = getStory(context);
-    return (
-      <form id={formId} onSubmit={onSubmit}>{story as ReactNode}</form>
-    );
+    return getStory(context);
   },
 });

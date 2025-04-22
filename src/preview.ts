@@ -9,8 +9,10 @@
  * https://storybook.js.org/docs/react/writing-stories/decorators
  */
 import type {ProjectAnnotations, Renderer} from "storybook/internal/types";
+import {handleHtmlForm} from "./handleHtmlForm";
 
 const preview: ProjectAnnotations<Renderer> = {
+  decorators: [handleHtmlForm]
 };
 
 export default preview;

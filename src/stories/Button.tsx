@@ -38,18 +38,14 @@ export const Button = ({
 }: ButtonProps) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
-    <div>
-      <input name="input1" type="text" defaultValue="bla" />
-      <input name="input1" type="text" defaultValue="bla2" />
-      <button
-        name="button1"
-        type={type}
-        className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-        style={{ backgroundColor }}
-        {...props}
-      >
-        {label}
-      </button>
-    </div>
+    <button
+      name="button1"
+      type={type}
+      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      style={{ backgroundColor }}
+      {...props}
+    >
+      {label}
+    </button>
   );
 };
